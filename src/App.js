@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import FirstTab from './FirstTab';
 import SecondTab from './SecondTab';
+
+const Offscreen = React.unstable_Offscreen;
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('Tab 1');
@@ -17,13 +19,12 @@ const App = () => {
         <div className={`tab ${activeTab === 'Tab 2' ? 'tab_active' : ''}`} onClick={onSetActiveTab('Tab 2')}>Tab 2</div>
       </div>
       <div className="tab-content">
-        {
-          activeTab === 'Tab 1' ? (
-            <FirstTab />
-          ) : (
-            <SecondTab />
-          )
-        }
+      <Offscreen mode={activeTab === 'Tab 1' ? 'visible' : 'hidden'}>
+        <FirstTab />
+      </Offscreen>
+      <Offscreen mode={activeTab === 'Tab 2' ? 'visible' : 'hidden'}>
+        <SecondTab />
+      </Offscreen>
       </div>
     </div>
   );
