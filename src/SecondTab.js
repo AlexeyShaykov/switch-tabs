@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const SecondTab = () => {
+const SecondTab = ({ activeTab }) => {
   const [inputValue, setInputValue] = useState('');
 
   const onInputValue = ({ target: { value } }) => {
@@ -12,7 +12,7 @@ const SecondTab = () => {
   }, []);
 
   return (
-    <form>
+    <form className={activeTab === 'Tab 1' ? 'hidden' : ''}>
       <label htmlFor="input">Here is label</label>
       <input type="text" id="input" value={inputValue} onChange={onInputValue} />
     </form>

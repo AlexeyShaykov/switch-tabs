@@ -17,13 +17,8 @@ const App = () => {
         <div className={`tab ${activeTab === 'Tab 2' ? 'tab_active' : ''}`} onClick={onSetActiveTab('Tab 2')}>Tab 2</div>
       </div>
       <div className="tab-content">
-        {
-          activeTab === 'Tab 1' ? (
-            <FirstTab />
-          ) : (
-            <SecondTab />
-          )
-        }
+        <FirstTab activeTab={activeTab}  />
+        <SecondTab activeTab={activeTab} />
       </div>
     </div>
   );
