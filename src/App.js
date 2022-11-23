@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
 
-function App() {
+import FirstTab from './FirstTab';
+import SecondTab from './SecondTab';
+
+const App = () => {
+  const [activeTab, setActiveTab] = useState('Tab 1');
+
+  const onSetActiveTab = (tabName) => () => {
+    setActiveTab(tabName)
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className="tabs">
+        <div className={`tab ${activeTab === 'Tab 1' ? 'tab_active' : ''}`} onClick={onSetActiveTab('Tab 1')}>Tab 1</div>
+        <div className={`tab ${activeTab === 'Tab 2' ? 'tab_active' : ''}`} onClick={onSetActiveTab('Tab 2')}>Tab 2</div>
+      </div>
+      <div className="tab-content">
+        {
+          activeTab === 'Tab 1' ? (
+            <FirstTab />
+          ) : (
+            <SecondTab />
+          )
+        }
+      </div>
     </div>
   );
-}
+};
 
 export default App;

@@ -11,3 +11,34 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.tabs {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.tab {
+  width: 50%;
+  text-align: center;
+  max-width: 100px;
+  padding: 20px;
+  border: 1px solid;
+  cursor: pointer;
+}
+
+.tab_active {
+  background: pink;
+}
+
+.tab-content {
+  max-width: 800px;
+  margin: auto;
+  margin-top: 20px;
+}
+
+#input {
+  margin-left: 20px;
+}
